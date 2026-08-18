@@ -1080,7 +1080,7 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 /* ===== THANK YOU — SIMULATOR RESULT ===== */
 .thankyou-card { max-width: 640px }
 .thankyou-title { font-size: 26px }
-.thankyou-sub { max-width: 440px; margin-left: auto; margin-right: auto; text-align: center }
+.thankyou-card .thankyou-sub { max-width: 440px; margin: 8px auto; text-align: center }
 
 .next-steps {
   display: grid;

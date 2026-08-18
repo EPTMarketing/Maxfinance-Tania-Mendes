@@ -73,7 +73,7 @@
             <h2 class="wizard-title">Calcule a sua mensalidade em <span class="wizard-title-break">1 minuto!</span></h2>
             <div class="wizard-progress">
               <div class="wizard-progress-bar"><div class="wizard-progress-fill" id="wizardProgressFill"></div></div>
-              <div class="wizard-step-label">Passo <span id="wizardStepNum">1</span> de 6</div>
+              <div class="wizard-step-label">Passo <span id="wizardStepNum">1</span> de <span id="wizardStepTotal">6</span></div>
             </div>
           </div>
 
@@ -138,32 +138,6 @@
                     <input type="radio" name="fase_imovel" value="Só quero mais informações" data-weight="0" />
                     <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v10.5H9l-4 3.5v-3.5H4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span>
                     <span class="option-text"><span class="option-title">Só quero mais informações</span></span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="wizard-variant" data-variant="Pessoal" hidden>
-                <h2 class="wizard-q">Para que fim pretende o crédito pessoal?</h2>
-                <div class="option-grid option-grid--1col form-group">
-                  <label class="option-card">
-                    <input type="radio" name="finalidade_pessoal" value="Obras ou remodelação da casa" data-weight="2" />
-                    <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 001 1H9v-5.5a1 1 0 011-1h4a1 1 0 011 1V20h2.5a1 1 0 001-1v-9"/></svg></span>
-                    <span class="option-text"><span class="option-title">Obras ou remodelação da casa</span></span>
-                  </label>
-                  <label class="option-card">
-                    <input type="radio" name="finalidade_pessoal" value="Compra de equipamento ou mobiliário" data-weight="2" />
-                    <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="2"/><path d="M3.5 10.5h17"/><path d="M7 14.5h4"/></svg></span>
-                    <span class="option-text"><span class="option-title">Compra de equipamento ou mobiliário</span></span>
-                  </label>
-                  <label class="option-card">
-                    <input type="radio" name="finalidade_pessoal" value="Despesas de saúde ou educação" data-weight="2" />
-                    <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
-                    <span class="option-text"><span class="option-title">Despesas de saúde ou educação</span></span>
-                  </label>
-                  <label class="option-card">
-                    <input type="radio" name="finalidade_pessoal" value="Outro projeto pessoal" data-weight="1" />
-                    <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.7 2.7 0 015.2 1c0 1.8-2.3 2-2.5 3.7"/><circle cx="12" cy="17" r="0.15" fill="currentColor" stroke="currentColor"/></svg></span>
-                    <span class="option-text"><span class="option-title">Outro projeto pessoal</span></span>
                   </label>
                 </div>
               </div>
@@ -344,22 +318,22 @@
               <h2 class="wizard-q">Quando pretende avançar?</h2>
               <div class="option-grid option-grid--1col form-group">
                 <label class="option-card">
-                  <input type="radio" name="timing" value="Imediatamente, já tenho tudo pronto" data-weight="3" required />
+                  <input type="radio" name="timing" value="Imediatamente, já tenho tudo pronto" data-weight="3" />
                   <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L10.5 22 19.5 10H13z"/></svg></span>
                   <span class="option-text"><span class="option-title">Imediatamente, já tenho tudo pronto</span></span>
                 </label>
                 <label class="option-card">
-                  <input type="radio" name="timing" value="Nos próximos 30 dias" data-weight="2" required />
+                  <input type="radio" name="timing" value="Nos próximos 30 dias" data-weight="2" />
                   <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></span>
                   <span class="option-text"><span class="option-title">Nos próximos 30 dias</span></span>
                 </label>
                 <label class="option-card">
-                  <input type="radio" name="timing" value="Nos próximos 3 meses" data-weight="1" required />
+                  <input type="radio" name="timing" value="Nos próximos 3 meses" data-weight="1" />
                   <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8 14h8"/></svg></span>
                   <span class="option-text"><span class="option-title">Nos próximos 3 meses</span></span>
                 </label>
                 <label class="option-card">
-                  <input type="radio" name="timing" value="Ainda estou só a planear" data-weight="0" required />
+                  <input type="radio" name="timing" value="Ainda estou só a planear" data-weight="0" />
                   <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.5-1.3-3.7-2-6.5-2v13c2.8 0 5 .7 6.5 2 1.5-1.3 3.7-2 6.5-2v-13c-2.8 0-5 .7-6.5 2z"/><path d="M12 6.5v13"/></svg></span>
                   <span class="option-text"><span class="option-title">Ainda estou só a planear</span></span>
                 </label>
@@ -737,6 +711,7 @@
 
       var progressFill = document.getElementById('wizardProgressFill');
       var stepNumEl = document.getElementById('wizardStepNum');
+      var stepTotalEl = document.getElementById('wizardStepTotal');
       var backBtn = document.getElementById('wizardBackBtn');
       var nextBtn = document.getElementById('wizardNextBtn');
       var submitBtn = document.getElementById('wizardSubmitBtn');
@@ -813,6 +788,46 @@
         });
       }
 
+      // --- Alguns passos só se aplicam consoante o tipo de crédito escolhido:
+      // passo 2 (pergunta de qualificação) não se aplica a "Pessoal";
+      // passo 5 ("Quando pretende avançar?") só se aplica a "Habitação" ---
+      var timingStepEl = steps[4]; // data-step="5"
+      var timingRadios = timingStepEl.querySelectorAll('input[name="timing"]');
+
+      function stepAppliesToTipo(position, tipo) {
+        if (position === 2) return tipo !== 'Pessoal';
+        if (position === 5) return tipo === 'Habitação';
+        return true;
+      }
+      function getSelectedTipo() {
+        var checked = form.querySelector('input[name="tipo_credito"]:checked');
+        return checked ? checked.value : null;
+      }
+      // Antes de o utilizador escolher o tipo de crédito, assume-se que o passo existe
+      // (evita um "salto" visual no rótulo antes da primeira escolha)
+      function stepApplies(position) {
+        var tipo = getSelectedTipo();
+        return tipo ? stepAppliesToTipo(position, tipo) : true;
+      }
+      function updateTimingStep(tipo) {
+        var isActive = stepAppliesToTipo(5, tipo);
+        timingRadios.forEach(function (r) {
+          r.required = isActive;
+          if (!isActive) r.checked = false;
+        });
+      }
+
+      function logicalTotal() {
+        var count = 0;
+        for (var i = 1; i <= totalSteps; i++) if (stepApplies(i)) count++;
+        return count;
+      }
+      function logicalNumber(n) {
+        var count = 0;
+        for (var i = 1; i <= n; i++) if (stepApplies(i)) count++;
+        return count;
+      }
+
       var creditConfig = {
         'Habitação': { min: 50000, max: 1000000, step: 5000, value: 250000, prazoMin: 5, prazoMax: 40, prazoStep: 1, prazoValue: 35, label: 'Valor de financiamento desejado' },
         'Pessoal': { min: 1000, max: 75000, step: 500, value: 15000, prazoMin: 1, prazoMax: 10, prazoStep: 1, prazoValue: 5, label: 'Valor que pretende pedir emprestado' },
@@ -833,6 +848,8 @@
         r.addEventListener('change', function () {
           updateStep2Variant(r.value);
           updateStep3ForTipo(r.value);
+          updateTimingStep(r.value);
+          showStep(current); // refresh "Passo X de Y" imediatamente após a escolha
         });
       });
 
@@ -921,8 +938,11 @@
         steps.forEach(function (s) {
           s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === n);
         });
-        if (progressFill) progressFill.style.width = (n / totalSteps * 100) + '%';
-        if (stepNumEl) stepNumEl.textContent = n;
+        var total = logicalTotal();
+        var logical = logicalNumber(n);
+        if (progressFill) progressFill.style.width = (logical / total * 100) + '%';
+        if (stepNumEl) stepNumEl.textContent = logical;
+        if (stepTotalEl) stepTotalEl.textContent = total;
         if (backBtn) backBtn.hidden = n === 1;
         if (nextBtn) nextBtn.style.display = n === totalSteps ? 'none' : '';
         if (submitBtn) submitBtn.style.display = n === totalSteps ? '' : 'none';
@@ -945,15 +965,19 @@
           if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
-        if (current < totalSteps) {
-          current++;
+        var next = current + 1;
+        while (next <= totalSteps && !stepApplies(next)) next++;
+        if (next <= totalSteps) {
+          current = next;
           showStep(current);
         }
       }
 
       function goBack() {
-        if (current > 1) {
-          current--;
+        var prev = current - 1;
+        while (prev >= 1 && !stepApplies(prev)) prev--;
+        if (prev > 0) {
+          current = prev;
           showStep(current);
         }
       }
