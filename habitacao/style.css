@@ -1046,12 +1046,15 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
   gap: 16px;
   width: max-content;
   animation: scrollBanks 28s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .banks-track:hover { animation-play-state: paused; }
 
 @keyframes scrollBanks {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translateX(0) translateZ(0); }
+  to   { transform: translateX(-50%) translateZ(0); }
 }
 
 .bank-logo-item {
@@ -1252,6 +1255,30 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 }
 
 .thankyou-contact--bottom { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border); }
+.thankyou-contact-links { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 12px }
+.thankyou-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity .15s;
+}
+.thankyou-contact-link:hover { opacity: .7 }
+.thankyou-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.thankyou-contact-icon svg { width: 15px; height: 15px }
 
 @media (max-width: 600px) {
   .sim-result-value { font-size: 32px }
