@@ -848,7 +848,7 @@
           updateStep2Variant(r.value);
           updateStep3ForTipo(r.value);
           updateTimingStep(r.value);
-          showStep(current); // refresh "Passo X de Y" imediatamente após a escolha
+          showStep(current, true); // refresh "Passo X de Y" imediatamente após a escolha, sem scroll
         });
       });
 
@@ -933,7 +933,7 @@
         return valid;
       }
 
-      function showStep(n) {
+      function showStep(n, skipScroll) {
         steps.forEach(function (s) {
           s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === n);
         });
@@ -953,8 +953,10 @@
             try { firstInput.focus({ preventScroll: true }); } catch (e) {}
           }
         }
-        var card = document.getElementById('formulario');
-        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (!skipScroll) {
+          var card = document.getElementById('formulario');
+          if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       }
 
       function goNext() {
@@ -1019,7 +1021,7 @@
       });
 
       toggleTitular2();
-      showStep(current);
+      showStep(current, true); // renderização inicial: não faz scroll da página
     })();
   </script>
 
