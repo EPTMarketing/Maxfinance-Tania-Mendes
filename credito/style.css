@@ -1076,6 +1076,9 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
   .bank-logo-item img { width: auto; max-height: 20px; transform: none; }
   .banks-carousel-wrap::before,
   .banks-carousel-wrap::after { width: 40px; }
+  /* Num ecrã estreito o mesmo px/seg parece mais lento (menos do ecrã é
+     percorrido por segundo), por isso o mobile precisa de uma duração menor */
+  .banks-track { animation-duration: 9s; }
 }
 
 /* ===== THANK YOU — SIMULATOR RESULT ===== */
