@@ -79,7 +79,7 @@
 
           <form name="maxfinancetaniacredito" method="POST" data-netlify="true" action="/credito/send.html" id="leadForm" novalidate autocomplete="off">
             <input type="hidden" name="form-name" value="maxfinancetaniacredito" />
-            <input type="hidden" name="campaign" id="hidden_campaign" value="" />
+            <input type="hidden" name="campaign" id="hidden_campaign" value="Crédito" />
             <input type="hidden" name="valor_financiar" id="hidden_valor_financiar" value="250000" />
             <input type="hidden" name="prazo" id="hidden_prazo" value="35" />
             <input type="hidden" name="gclid" id="hidden_gclid" value="" />
@@ -844,13 +844,11 @@
         setSliderConfig('valor_financiar', 'valor_financiar_display', 'hidden_valor_financiar', cfg.min, cfg.max, cfg.step, cfg.value);
         setSliderConfig('prazo', 'prazo_display', 'hidden_prazo', cfg.prazoMin, cfg.prazoMax, cfg.prazoStep, cfg.prazoValue);
       }
-      var hiddenCampaign = document.getElementById('hidden_campaign');
       tipoCreditoRadios.forEach(function (r) {
         r.addEventListener('change', function () {
           updateStep2Variant(r.value);
           updateStep3ForTipo(r.value);
           updateTimingStep(r.value);
-          if (hiddenCampaign) hiddenCampaign.value = r.value; // segmenta o lead por tipo de crédito no CRM
           showStep(current, true); // refresh "Passo X de Y" imediatamente após a escolha, sem scroll
         });
       });
