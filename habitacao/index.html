@@ -77,8 +77,8 @@
             </div>
           </div>
 
-          <form name="maxfinancetaniahabitacao" method="POST" data-netlify="true" action="/habitacao/send.html" id="leadForm" novalidate autocomplete="off">
-            <input type="hidden" name="form-name" value="maxfinancetaniahabitacao" />
+          <form name="maxfinancetaniahabitacao_qualificadas" method="POST" data-netlify="true" action="/habitacao/send.html" id="leadForm" novalidate autocomplete="off">
+            <input type="hidden" name="form-name" id="netlifyFormName" value="maxfinancetaniahabitacao_qualificadas" />
             <input type="hidden" name="valor_financiar" id="hidden_valor_financiar" value="250000" />
             <input type="hidden" name="prazo" id="hidden_prazo" value="35" />
             <input type="hidden" name="gclid" id="hidden_gclid" value="" />
@@ -335,6 +335,31 @@
               <button type="button" class="wizard-next-btn" id="wizardNextBtn">Seguinte</button>
               <button type="submit" class="submit-btn" id="wizardSubmitBtn" style="display:none">Ver estimativa</button>
             </div>
+          </form>
+
+          <!-- O Netlify deteta formulários durante o deploy. Este formulário invisível
+               regista o segundo destino usado dinamicamente no envio. -->
+          <form name="maxfinancetaniahabitacao_nao_qualificadas" method="POST" data-netlify="true" hidden aria-hidden="true">
+            <input type="hidden" name="form-name" value="maxfinancetaniahabitacao_nao_qualificadas" />
+            <input name="objetivo" />
+            <input name="fase_imovel" />
+            <input name="motivo_transferencia" />
+            <input name="titulares" />
+            <input name="valor_financiar" />
+            <input name="prazo" />
+            <input name="situacao_profissional" />
+            <input name="situacao_outra" />
+            <input name="situacao_profissional2" />
+            <input name="situacao_outra2" />
+            <input name="timing" />
+            <input name="nome" />
+            <input name="telefone" />
+            <input name="email" />
+            <input name="consentimento" />
+            <input name="gclid" />
+            <input name="fbclid" />
+            <input name="lead_score" />
+            <input name="qualificacao" />
           </form>
 
         </div>
@@ -647,6 +672,23 @@
       var backBtn = document.getElementById('wizardBackBtn');
       var nextBtn = document.getElementById('wizardNextBtn');
       var submitBtn = document.getElementById('wizardSubmitBtn');
+      var netlifyFormName = document.getElementById('netlifyFormName');
+      var qualificacaoField = document.getElementById('hidden_qualificacao');
+
+      function updateLeadDestination() {
+        var fase = form.querySelector('input[name="fase_imovel"]:checked');
+        var timing = form.querySelector('input[name="timing"]:checked');
+        var naoQualificada = (fase && fase.getAttribute('data-weight') === '0') ||
+          (timing && timing.getAttribute('data-weight') === '0');
+        var qualificacao = naoQualificada ? 'Nao qualificada' : 'Qualificada';
+        var formName = naoQualificada
+          ? 'maxfinancetaniahabitacao_nao_qualificadas'
+          : 'maxfinancetaniahabitacao_qualificadas';
+
+        form.setAttribute('name', formName);
+        if (netlifyFormName) netlifyFormName.value = formName;
+        if (qualificacaoField) qualificacaoField.value = qualificacao;
+      }
 
       // --- 2º titular toggle (passo 4) ---
       var titularesSelect = document.getElementById('titulares');
@@ -874,6 +916,7 @@
           event.preventDefault();
           return;
         }
+        updateLeadDestination();
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.textContent = 'A enviar...';
