@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crédito Habitação, Pessoal, Automóvel e Consolidado | Maxfinance – Tânia Mendes</title>
-  <meta name="description" content="Encontre a solução de crédito certa para si com a Maxfinance – Tânia Mendes: habitação, pessoal, automóvel ou consolidado. Serviço gratuito, intermediário certificado. Receba as melhores propostas em 24 horas." />
+  <title>Crédito Habitação, Transferência e Consolidado | Maxfinance – Tânia Mendes</title>
+  <meta name="description" content="Encontre a solução certa para crédito habitação, transferência de crédito ou crédito consolidado com a Maxfinance – Tânia Mendes. Serviço gratuito e acompanhamento personalizado." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Crédito Habitação, Pessoal, Automóvel e Consolidado | Maxfinance – Tânia Mendes" />
+  <meta property="og:title" content="Crédito Habitação, Transferência e Consolidado | Maxfinance – Tânia Mendes" />
   <meta property="og:description" content="Encontre a solução de crédito certa para si. Serviço gratuito, 100% online, intermediário certificado pelo Banco de Portugal." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
@@ -90,21 +90,16 @@
             <!-- PASSO 1 -->
             <div class="wizard-step active" data-step="1">
               <h2 class="wizard-q">Qual o tipo de crédito que pretende?</h2>
-              <div class="option-grid form-group">
+              <div class="option-grid option-grid--1col form-group">
                 <label class="option-card">
                   <input type="radio" name="tipo_credito" value="Habitação" required />
                   <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5L12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 001 1H9v-5.5a1 1 0 011-1h4a1 1 0 011 1V20h2.5a1 1 0 001-1v-9"/></svg></span>
-                  <span class="option-text"><span class="option-title">Habitação</span><span class="option-sub">compra ou transferência</span></span>
+                  <span class="option-text"><span class="option-title">Crédito Habitação</span><span class="option-sub">compra de imóvel</span></span>
                 </label>
                 <label class="option-card">
-                  <input type="radio" name="tipo_credito" value="Pessoal" required />
-                  <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h13a1 1 0 011 1v2M3 7v10a2 2 0 002 2h14a1 1 0 001-1v-8a1 1 0 00-1-1H5a2 2 0 01-2-2z"/><circle cx="16" cy="13" r="1.2" fill="currentColor" stroke="none"/></svg></span>
-                  <span class="option-text"><span class="option-title">Pessoal</span><span class="option-sub">projetos e necessidades</span></span>
-                </label>
-                <label class="option-card">
-                  <input type="radio" name="tipo_credito" value="Automóvel" required />
-                  <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16v-4.5l2-4.5h11l2 4.5V16"/><path d="M4.5 16h15M6.5 16v2M17.5 16v2"/><circle cx="8" cy="16" r="1.3"/><circle cx="16" cy="16" r="1.3"/></svg></span>
-                  <span class="option-text"><span class="option-title">Automóvel</span><span class="option-sub">novo ou usado</span></span>
+                  <input type="radio" name="tipo_credito" value="Transferência" required />
+                  <span class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13l-3-3M20 17H7l3 3"/></svg></span>
+                  <span class="option-text"><span class="option-title">Transferência</span><span class="option-sub">transfira o seu crédito habitação</span></span>
                 </label>
                 <label class="option-card">
                   <input type="radio" name="tipo_credito" value="Consolidado" required />
@@ -214,7 +209,7 @@
               <div class="simulator-block">
 
                 <div class="form-group">
-                  <label class="field-label" for="titulares">Nº de titulares *</label>
+                  <label class="field-label" for="titulares" id="labelTitulares">Nº de titulares *</label>
                   <select id="titulares" name="titulares" required>
                     <option value="" disabled selected>Selecionar</option>
                     <option value="1">1 titular</option>
@@ -316,7 +311,7 @@
 
             <!-- PASSO 5 -->
             <div class="wizard-step" data-step="5">
-              <h2 class="wizard-q">Quando pretende avançar?</h2>
+              <h2 class="wizard-q" id="timingTitle">Quando pretende avançar?</h2>
               <div class="option-grid option-grid--1col form-group">
                 <label class="option-card">
                   <input type="radio" name="timing" value="Imediatamente" data-weight="3" />
@@ -386,7 +381,7 @@
       <div class="container">
         <div class="about-text">
           <h2>Negociamos com os nossos parceiros bancários para assegurar as condições mais vantajosas.</h2>
-          <p>Ajudamos a encontrar as melhores condições de crédito. Se está à procura de financiamento para a casa, um projeto pessoal, a compra de um veículo ou para reunir os seus créditos num só, ajudamos a encontrar a melhor proposta entre diversas instituições financeiras, na qualidade de Intermediário de Crédito.</p>
+          <p>Ajudamos a encontrar as melhores condições para comprar casa, transferir o seu crédito habitação ou reunir vários créditos num só. Comparamos propostas de diversas instituições financeiras e acompanhamos todo o processo, na qualidade de Intermediário de Crédito.</p>
           <a href="#formulario" class="primary-btn">SIMULAÇÃO GRATUITA</a>
         </div>
       </div>
@@ -720,7 +715,7 @@
       var situacao2Select = document.getElementById('situacao_profissional2');
 
       function toggleTitular2() {
-        var isDois = titularesSelect && titularesSelect.value === '2';
+        var isDois = titularesSelect && titularesSelect.value === '2' && getSelectedTipo() !== 'Transferência';
         if (!titular2Wrap) return;
         titular2Wrap.hidden = !isDois;
         if (situacao2Select) situacao2Select.required = !!isDois;
@@ -767,8 +762,10 @@
       var tipoCreditoRadios = form.querySelectorAll('input[name="tipo_credito"]');
       var step2Variants = form.querySelectorAll('.wizard-variant');
       var step3Title = document.getElementById('step3Title');
+      var labelTitulares = document.getElementById('labelTitulares');
       var labelValorFinanciar = document.getElementById('labelValorFinanciar');
       var labelPrazo = document.getElementById('labelPrazo');
+      var timingTitle = document.getElementById('timingTitle');
 
       function setVariantRequired(variantEl, isActive) {
         variantEl.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(function (r) {
@@ -786,14 +783,13 @@
         });
       }
 
-      // --- Alguns passos só se aplicam consoante o tipo de crédito escolhido:
-      // passo 2 (pergunta de qualificação) não se aplica a "Pessoal";
-      // passo 5 ("Quando pretende avançar?") só se aplica a "Habitação" ---
+      // Na Transferência, o utilizador segue diretamente para o simulador e não
+      // precisa de indicar a situação profissional.
       var timingStepEl = steps[4]; // data-step="5"
       var timingRadios = timingStepEl.querySelectorAll('input[name="timing"]');
 
       function stepAppliesToTipo(position, tipo) {
-        if (position === 2) return tipo !== 'Pessoal';
+        if (tipo === 'Transferência' && (position === 2 || position === 4)) return false;
         return true;
       }
       function getSelectedTipo() {
@@ -814,6 +810,21 @@
         });
       }
 
+      function updateProfessionalStep(tipo) {
+        var isActive = stepAppliesToTipo(4, tipo);
+        form.querySelectorAll('input[name="situacao_profissional"]').forEach(function (r) {
+          r.required = isActive;
+          if (!isActive) r.checked = false;
+        });
+        if (!isActive) {
+          if (outraInput) { outraInput.required = false; outraInput.value = ''; }
+          if (situacao2Select) { situacao2Select.required = false; situacao2Select.value = ''; }
+          if (outraInputT2) { outraInputT2.required = false; outraInputT2.value = ''; }
+        }
+        toggleOutraSituacao();
+        toggleOutraSituacaoT2();
+      }
+
       function logicalTotal() {
         var count = 0;
         for (var i = 1; i <= totalSteps; i++) if (stepApplies(i)) count++;
@@ -826,18 +837,19 @@
       }
 
       var creditConfig = {
-        'Habitação': { min: 50000, max: 1000000, step: 5000, value: 250000, prazoMin: 5, prazoMax: 40, prazoStep: 1, prazoValue: 35, label: 'Valor de financiamento desejado' },
-        'Pessoal': { min: 1000, max: 75000, step: 500, value: 15000, prazoMin: 1, prazoMax: 10, prazoStep: 1, prazoValue: 5, label: 'Valor que pretende pedir emprestado' },
-        'Automóvel': { min: 2000, max: 75000, step: 500, value: 20000, prazoMin: 1, prazoMax: 10, prazoStep: 1, prazoValue: 7, label: 'Valor de financiamento do veículo' },
-        'Consolidado': { min: 5000, max: 150000, step: 1000, value: 30000, prazoMin: 1, prazoMax: 15, prazoStep: 1, prazoValue: 8, label: 'Valor total a consolidar' }
+        'Habitação': { min: 50000, max: 1000000, step: 5000, value: 250000, prazoMin: 5, prazoMax: 40, prazoStep: 1, prazoValue: 35, title: 'Simule o seu crédito habitação', titulares: 'Nº de titulares *', label: 'Valor de financiamento desejado', prazoLabel: 'Prazo pretendido', timing: 'Quando pretende avançar?' },
+        'Transferência': { min: 25000, max: 1000000, step: 5000, value: 150000, prazoMin: 1, prazoMax: 40, prazoStep: 1, prazoValue: 25, title: 'Simule a transferência do seu crédito', titulares: 'Nº de titulares do crédito *', label: 'Capital atualmente em dívida', prazoLabel: 'Prazo restante pretendido', timing: 'Quando pretende transferir o seu crédito?' },
+        'Consolidado': { min: 5000, max: 150000, step: 1000, value: 30000, prazoMin: 1, prazoMax: 15, prazoStep: 1, prazoValue: 8, title: 'Simule o seu crédito consolidado', titulares: 'Nº de titulares *', label: 'Valor total a consolidar', prazoLabel: 'Prazo pretendido', timing: 'Quando pretende avançar?' }
       };
 
       function updateStep3ForTipo(tipo) {
         var cfg = creditConfig[tipo];
         if (!cfg) return;
+        if (labelTitulares) labelTitulares.textContent = cfg.titulares;
         if (labelValorFinanciar) labelValorFinanciar.textContent = cfg.label;
-        if (labelPrazo) labelPrazo.textContent = 'Prazo';
-        if (step3Title) step3Title.textContent = 'Calcule a sua mensalidade estimada';
+        if (labelPrazo) labelPrazo.textContent = cfg.prazoLabel;
+        if (step3Title) step3Title.textContent = cfg.title;
+        if (timingTitle) timingTitle.textContent = cfg.timing;
         setSliderConfig('valor_financiar', 'valor_financiar_display', 'hidden_valor_financiar', cfg.min, cfg.max, cfg.step, cfg.value);
         setSliderConfig('prazo', 'prazo_display', 'hidden_prazo', cfg.prazoMin, cfg.prazoMax, cfg.prazoStep, cfg.prazoValue);
       }
@@ -846,6 +858,8 @@
           updateStep2Variant(r.value);
           updateStep3ForTipo(r.value);
           updateTimingStep(r.value);
+          updateProfessionalStep(r.value);
+          toggleTitular2();
           showStep(current, true); // refresh "Passo X de Y" imediatamente após a escolha, sem scroll
         });
       });
