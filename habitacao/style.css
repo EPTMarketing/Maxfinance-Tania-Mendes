@@ -713,15 +713,19 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 /* ===== REDE DE INTERMEDIÁRIOS ===== */
 .network-section { background: #fff }
 .network-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: stretch;
+  display: flow-root;
 }
 .network-media {
+  float: right;
+  width: calc((100% - 56px) / 2);
+  margin: 0 0 24px 56px;
+  aspect-ratio: 3 / 2;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
+}
+.network-text {
+  display: block;
 }
 .network-media img { width: 100%; height: 100%; object-fit: cover }
 .network-text h2 { margin-bottom: 16px; font-size: 28px }
@@ -731,10 +735,24 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
   color: var(--muted);
   margin: 0 0 14px;
 }
+.network-text p strong { color: var(--primary) }
+.network-text .network-highlight {
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 22px 0;
+}
+.network-text .network-question {
+  color: #111;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 22px;
+}
 .network-text .primary-btn { margin-top: 6px }
 
 /* ===== FAQ ===== */
-.faq-section { background: #fff }
+.faq-section { background: var(--light) }
 .faq-wrap { max-width: 646px; margin: 0 auto }
 .faq-section h2 { text-align: center }
 .accordion { display: grid; gap: 10px; margin-top: 28px }
@@ -892,8 +910,8 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
   .logo-link { margin-bottom: 84px }
   .trust-bar-grid { grid-template-columns: repeat(2, 1fr) }
   .steps-grid { grid-template-columns: repeat(3, 1fr) }
-  .network-grid { grid-template-columns: 1fr; gap: 32px }
-  .network-media { aspect-ratio: 16 / 9 }
+  .network-grid { display: block }
+  .network-media { float: none; width: 100%; margin: 0 0 32px; aspect-ratio: 16 / 9 }
 }
 
 @media (max-width: 720px) {
