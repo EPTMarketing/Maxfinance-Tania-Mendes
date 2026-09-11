@@ -738,10 +738,16 @@
 
       function updateLeadDestination() {
         var tipo = getSelectedTipo();
+        var fase = form.querySelector('input[name="fase_imovel"]:checked');
         var timing = form.querySelector('input[name="timing"]:checked');
         var isHabitacao = tipo === 'Habitação';
-        var naoQualificada = isHabitacao && timing && timing.getAttribute('data-weight') === '0';
-        var score = timing ? parseInt(timing.getAttribute('data-weight'), 10) || 0 : 0;
+        var faseWeight = fase ? parseInt(fase.getAttribute('data-weight'), 10) || 0 : 0;
+        var timingWeight = timing ? parseInt(timing.getAttribute('data-weight'), 10) || 0 : 0;
+        var naoQualificada = isHabitacao && (
+          (fase && fase.getAttribute('data-weight') === '0') ||
+          (timing && timing.getAttribute('data-weight') === '0')
+        );
+        var score = faseWeight + timingWeight;
         var formName = 'maxfinancetaniacredito';
         var qualificacao = '';
 
