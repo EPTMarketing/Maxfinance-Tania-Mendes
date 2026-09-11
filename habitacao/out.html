@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedido recebido | Maxfinance – Tânia Mendes</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="thankyou-body">
+  <main class="thankyou-page">
+    <div class="thankyou-card">
+      <img src="logo.svg" alt="Maxfinance – Tânia Mendes" class="thankyou-logo" />
+      <h1 class="thankyou-title">Obrigado<span id="thankyouNome"></span>! O seu pedido foi recebido.</h1>
+      <p class="thankyou-sub">A nossa equipa vai analisar a sua situação e contactá-lo(a) em até <b>48 horas</b>.</p>
+      <div class="thankyou-contact thankyou-contact--bottom">
+        <p><strong>Maxfinance – Tânia Mendes</strong></p>
+        <div class="thankyou-contact-links">
+          <a href="tel:+351915394919" class="thankyou-contact-link"><span>915 394 919</span></a>
+          <a href="mailto:taniasmendes@maxfinance.pt" class="thankyou-contact-link"><span>taniasmendes@maxfinance.pt</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    var nome = sessionStorage.getItem('sim_nome');
+    if (nome) document.getElementById('thankyouNome').textContent = ', ' + nome.trim().split(' ')[0];
+  </script>
+</body>
+</html>

@@ -339,7 +339,7 @@
 
           <!-- O Netlify deteta formulários durante o deploy. Este formulário invisível
                regista o segundo destino usado dinamicamente no envio. -->
-          <form name="maxfinancetaniahabitacao_nao_qualificadas" method="POST" data-netlify="true" action="/habitacao/send.html" hidden aria-hidden="true">
+          <form name="maxfinancetaniahabitacao_nao_qualificadas" method="POST" data-netlify="true" action="/habitacao/out.html" hidden aria-hidden="true">
             <input type="hidden" name="form-name" value="maxfinancetaniahabitacao_nao_qualificadas" />
             <input name="objetivo" />
             <input name="fase_imovel" />
@@ -690,6 +690,7 @@
           : 'maxfinancetaniahabitacao_qualificadas';
 
         form.setAttribute('name', formName);
+        form.setAttribute('action', naoQualificada ? '/habitacao/out.html' : '/habitacao/send.html');
         if (netlifyFormName) netlifyFormName.value = formName;
         if (qualificacaoField) qualificacaoField.value = qualificacao;
       }
