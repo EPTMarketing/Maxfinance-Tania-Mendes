@@ -78,7 +78,7 @@
           </div>
 
           <form name="maxfinancetaniacredito" method="POST" data-netlify="true" action="/credito/send.html" id="leadForm" novalidate autocomplete="off">
-            <input type="hidden" name="form-name" value="maxfinancetaniacredito" />
+            <input type="hidden" name="form-name" id="netlifyFormName" value="maxfinancetaniacredito" />
             <input type="hidden" name="campaign" id="hidden_campaign" value="Crédito" />
             <input type="hidden" name="valor_financiar" id="hidden_valor_financiar" value="250000" />
             <input type="hidden" name="prazo" id="hidden_prazo" value="35" />
@@ -369,6 +369,26 @@
               <button type="submit" class="submit-btn" id="wizardSubmitBtn" style="display:none">Ver estimativa</button>
             </div>
           </form>
+          <!-- Formulários estáticos para o Netlify detetar os destinos de Habitação usados dinamicamente. -->
+          <form name="maxfinancetaniacredito_qualificadas" method="POST" data-netlify="true" action="/credito/send.html" hidden aria-hidden="true">
+            <input type="hidden" name="form-name" value="maxfinancetaniacredito_qualificadas" />
+            <input name="tipo_credito" /><input name="timing" /><input name="titulares" />
+            <input name="valor_financiar" /><input name="prazo" /><input name="situacao_profissional" />
+            <input name="situacao_outra" /><input name="situacao_profissional2" /><input name="situacao_outra2" />
+            <input name="nome" /><input name="telefone" /><input name="email" /><input name="consentimento" />
+            <input name="campaign" /><input name="gclid" /><input name="fbclid" />
+            <input name="lead_score" /><input name="qualificacao" />
+          </form>
+          <form name="maxfinancetaniacredito_nao_qualificadas" method="POST" data-netlify="true" action="/credito/out.html" hidden aria-hidden="true">
+            <input type="hidden" name="form-name" value="maxfinancetaniacredito_nao_qualificadas" />
+            <input name="tipo_credito" /><input name="timing" /><input name="titulares" />
+            <input name="valor_financiar" /><input name="prazo" /><input name="situacao_profissional" />
+            <input name="situacao_outra" /><input name="situacao_profissional2" /><input name="situacao_outra2" />
+            <input name="nome" /><input name="telefone" /><input name="email" /><input name="consentimento" />
+            <input name="campaign" /><input name="gclid" /><input name="fbclid" />
+            <input name="lead_score" /><input name="qualificacao" />
+          </form>
+
 
         </div>
       </div>
@@ -712,6 +732,32 @@
       var backBtn = document.getElementById('wizardBackBtn');
       var nextBtn = document.getElementById('wizardNextBtn');
       var submitBtn = document.getElementById('wizardSubmitBtn');
+      var netlifyFormName = document.getElementById('netlifyFormName');
+      var leadScoreField = document.getElementById('hidden_lead_score');
+      var qualificacaoField = document.getElementById('hidden_qualificacao');
+
+      function updateLeadDestination() {
+        var tipo = getSelectedTipo();
+        var timing = form.querySelector('input[name="timing"]:checked');
+        var isHabitacao = tipo === 'Habitação';
+        var naoQualificada = isHabitacao && timing && timing.getAttribute('data-weight') === '0';
+        var score = timing ? parseInt(timing.getAttribute('data-weight'), 10) || 0 : 0;
+        var formName = 'maxfinancetaniacredito';
+        var qualificacao = '';
+
+        if (isHabitacao) {
+          formName = naoQualificada
+            ? 'maxfinancetaniacredito_nao_qualificadas'
+            : 'maxfinancetaniacredito_qualificadas';
+          qualificacao = naoQualificada ? 'Nao qualificada' : 'Qualificada';
+        }
+
+        form.setAttribute('name', formName);
+        form.setAttribute('action', naoQualificada ? '/credito/out.html' : '/credito/send.html');
+        if (netlifyFormName) netlifyFormName.value = formName;
+        if (leadScoreField) leadScoreField.value = isHabitacao ? score : '';
+        if (qualificacaoField) qualificacaoField.value = qualificacao;
+      }
 
       // --- 2º titular toggle (passo 4) ---
       var titularesSelect = document.getElementById('titulares');
@@ -1030,6 +1076,7 @@
           event.preventDefault();
           return;
         }
+        updateLeadDestination();
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.textContent = 'A enviar...';
