@@ -52,6 +52,7 @@ h1, h2, h3 { font-family: "Lato", Arial, sans-serif; margin: 0; color: var(--tex
   position: relative;
   z-index: 1;
 }
+.hero-content { position: relative; top: -22px }
 .logo-link { display: inline-block; margin-bottom: 120px }
 .hero-logo { width: 190px; height: auto }
 
@@ -90,6 +91,18 @@ h1 b { color: var(--primary) }
 }
 
 .hero-bullets li b { font-weight: 700; color: var(--text) }
+
+/* Google Badge — réplica do Agente.pt */
+.google-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; background: #48708B; border: 1px solid #48708B; border-radius: 50px; padding: 8px 16px; backdrop-filter: blur(4px); box-shadow: 0 6px 18px rgba(72,112,139,0.22); text-decoration: none; cursor: pointer }
+.google-badge:hover { background: #3C6078 }
+.google-mark { background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath fill='%234285F4' d='M17.64 9.205c0-.638-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.797 2.716v2.258h2.909c1.702-1.567 2.684-3.875 2.684-6.614Z'/%3E%3Cpath fill='%2334A853' d='M9 18c2.43 0 4.468-.806 5.956-2.181l-2.909-2.258c-.806.54-1.835.859-3.047.859-2.344 0-4.328-1.585-5.037-3.714H.956v2.332A9 9 0 0 0 9 18Z'/%3E%3Cpath fill='%23FBBC05' d='M3.963 10.706A5.41 5.41 0 0 1 3.682 9c0-.592.102-1.168.281-1.706V4.962H.956A9 9 0 0 0 0 9c0 1.452.347 2.827.956 4.038l3.007-2.332Z'/%3E%3Cpath fill='%23EA4335' d='M9 3.58c1.321 0 2.507.454 3.441 1.346l2.581-2.581C13.464.892 11.426 0 9 0A9 9 0 0 0 .956 4.962l3.007 2.332C4.672 5.165 6.656 3.58 9 3.58Z'/%3E%3C/svg%3E") }
+.google-badge-icon { display: inline-block; width: 20px; height: 20px; flex-shrink: 0; background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M21.35 11.1H12.18v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81Z'/%3E%3C/svg%3E") }
+.google-badge-stars { display: flex; align-items: center; gap: 5px }
+.google-badge-score { color: #fff; font-weight: 700; font-size: 15px }
+.google-badge-stars-icons { color: #FFC107; font-size: 14px; letter-spacing: 1px }
+.google-badge-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.4) }
+.google-badge-text { color: #fff; font-size: 13px; font-weight: 400 }
+.reviews-summary-stars, .review-stars { color: #fbbc04; letter-spacing: 1px }
 
 /* ===== FORM CARD ===== */
 .form-card {
@@ -616,7 +629,7 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
   margin-bottom: 16px;
   color: var(--primary);
 }
-.about-section { background: #fff }
+.about-section { background: var(--light) }
 .about-text {
   max-width: 640px;
   margin: 0 auto;
@@ -631,7 +644,7 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 }
 
 /* ===== PROCESS ===== */
-.process-section { background: var(--light) }
+.process-section { background: #fff }
 .process-section h2 { text-align: center }
 .section-sub {
   font-size: 15px;
@@ -718,17 +731,17 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 }
 .network-media {
   float: right;
-  width: calc((100% - 56px) / 2);
+  width: min(32%, 340px);
   margin: 0 0 24px 56px;
-  aspect-ratio: 3 / 2;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
 .network-text {
   display: block;
 }
-.network-media img { width: 100%; height: 100%; object-fit: cover }
+.network-media img { width: 100%; height: auto; object-fit: contain; object-position: center; filter: drop-shadow(0 16px 22px rgba(1,77,153,.10)) }
 .network-text h2 { margin-bottom: 16px; font-size: 28px }
 .network-text p {
   font-size: 15px;
@@ -752,8 +765,25 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 }
 .network-text .primary-btn { margin-top: 6px }
 
+/* ===== GOOGLE REVIEWS ===== */
+.reviews-section { background: var(--light); text-align: center }
+.reviews-section h2 { margin-bottom: 10px }
+.reviews-summary { display: flex; align-items: center; justify-content: center; gap: 9px; color: var(--muted); font-size: 14px }
+.reviews-score { color: var(--text); font-size: 19px; font-weight: 800 }
+.reviews-summary-stars { font-size: 17px }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; text-align: left }
+.review-card { display: flex; flex-direction: column; min-height: 260px; padding: 24px; background: #fff; border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 10px 30px rgba(1,77,153,.06) }
+.review-head { display: grid; grid-template-columns: 42px 1fr auto; align-items: center; gap: 11px; margin-bottom: 18px }
+.review-avatar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: #fff; background: var(--primary); font-weight: 800 }
+.review-head h3 { margin: 0 0 2px; font-family: "Open Sans", sans-serif; font-size: 14px }
+.review-stars { display: block; font-size: 12px; line-height: 1 }
+.google-mark { display: block; width: 19px; height: 19px; overflow: hidden; color: transparent; font-size: 0 }
+.review-card p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.65 }
+.reviews-link { display: inline-flex; margin-top: 32px; padding: 13px 20px; border: 2px solid var(--primary); border-radius: 10px; color: var(--primary); font-size: 13px; font-weight: 800; text-decoration: none; transition: background .2s, color .2s }
+.reviews-link:hover { color: #fff; background: var(--primary) }
+
 /* ===== FAQ ===== */
-.faq-section { background: var(--light) }
+.faq-section { background: #fff }
 .faq-wrap { max-width: 646px; margin: 0 auto }
 .faq-section h2 { text-align: center }
 .accordion { display: grid; gap: 10px; margin-top: 28px }
@@ -908,11 +938,12 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 @media (max-width: 1050px) {
   .hero { min-height: auto; padding: 34px 0 54px }
   .hero-grid { grid-template-columns: 1fr; gap: 34px }
+  .hero-content { top: -10px }
   .logo-link { margin-bottom: 84px }
   .trust-bar-grid { grid-template-columns: repeat(2, 1fr) }
   .steps-grid { grid-template-columns: repeat(3, 1fr) }
   .network-grid { display: block }
-  .network-media { float: none; width: 100%; margin: 0 0 32px; aspect-ratio: 16 / 9 }
+  .network-media { float: none; width: min(100%, 300px); margin: 0 auto 32px; aspect-ratio: auto }
 }
 
 @media (max-width: 720px) {
@@ -1009,6 +1040,11 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
   .network-text h2 { font-size: 20px }
   .network-text p { font-size: 14px; line-height: 1.6 }
   .network-text .primary-btn { display: flex; width: fit-content; margin: 20px auto 0 }
+
+  /* ── Reviews ── */
+  .reviews-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 26px }
+  .review-card { min-height: 0; padding: 20px }
+  .reviews-link { margin-top: 26px; font-size: 11.5px }
 
   /* ── Steps ── */
   .steps-grid { grid-template-columns: 1fr 1fr; gap: 18px; padding-top: 16px; justify-items: center }
