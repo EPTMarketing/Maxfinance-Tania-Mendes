@@ -1105,6 +1105,11 @@
           return;
         }
         updateLeadDestination();
+        // Envia para o Brevo apenas as leads que seguem para a página de sucesso (send.html).
+        var leadAction = form.getAttribute('action') || '';
+        if (leadAction.indexOf('/send.html') !== -1 && window.sendLeadToBrevo) {
+          window.sendLeadToBrevo(form);
+        }
         if (submitBtn) {
           submitBtn.disabled = true;
           submitBtn.textContent = 'A enviar...';

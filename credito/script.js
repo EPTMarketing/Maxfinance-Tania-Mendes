@@ -120,3 +120,41 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+// Envia uma cópia da lead para o Brevo sem interferir com o Netlify Forms.
+window.sendLeadToBrevo = function (form) {
+  if (!form) return;
+
+  try {
+    var formData = new FormData(form);
+    var payload = {};
+
+    formData.forEach(function (value, key) {
+      if (key === 'form-name') {
+        payload.form_name = value;
+        return;
+      }
+
+      if (Object.prototype.hasOwnProperty.call(payload, key)) {
+        if (!Array.isArray(payload[key])) payload[key] = [payload[key]];
+        payload[key].push(value);
+      } else {
+        payload[key] = value;
+      }
+    });
+
+    payload.page_url = window.location.href;
+    payload.consentimento = form.querySelector('[name="consentimento"]:checked') ? 'Sim' : '';
+
+    fetch('/.netlify/functions/brevo-contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+      credentials: 'same-origin'
+    }).catch(function (error) {
+      console.warn('Não foi possível enviar a lead para o Brevo:', error);
+    });
+  } catch (error) {
+    console.warn('Erro ao preparar a lead para o Brevo:', error);
+  }
+};
