@@ -721,7 +721,7 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 .network-media {
   float: right;
   width: min(32%, 340px);
-  margin: 0 0 24px 56px;
+  margin: 0 0 24px 0;
   aspect-ratio: auto;
   border-radius: 0;
   box-shadow: none;
@@ -937,6 +937,7 @@ input[type="number"]:focus { border-color: var(--primary); box-shadow: 0 0 0 2px
 @media (max-width: 720px) {
   /* ── Layout base ── */
   .container { width: min(100% - 24px, 1120px) }
+  .network-media { width: min(100%, 220px) }
 
   /* ── Hero ── */
   .hero { padding: 22px 0 36px; min-height: auto }
