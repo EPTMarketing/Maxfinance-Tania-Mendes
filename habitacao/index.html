@@ -699,8 +699,8 @@
       function updateLeadDestination() {
         var fase = form.querySelector('input[name="fase_imovel"]:checked');
         var timing = form.querySelector('input[name="timing"]:checked');
-        var naoQualificada = (fase && fase.getAttribute('data-weight') === '0') ||
-          (timing && timing.getAttribute('data-weight') === '0');
+        var naoQualificada = fase && fase.getAttribute('data-weight') === '0' &&
+          timing && timing.getAttribute('data-weight') === '0';
         var qualificacao = naoQualificada ? 'Nao qualificada' : 'Qualificada';
         var formName = naoQualificada
           ? 'maxfinancetaniahabitacao_nao_qualificadas'
