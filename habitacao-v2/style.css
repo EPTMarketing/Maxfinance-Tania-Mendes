@@ -1042,3 +1042,8 @@ form[hidden], [hidden] { display: none !important; }
 /* Slightly smaller form heading. */
 .form-card h2 { font-size: 21px; }
 @media (max-width: 720px) { .form-card h2 { font-size: 20px; } }
+
+/* Add a little space above the hero title on mobile. */
+@media (max-width: 720px) {
+  .hero-content h1 { margin-top: 28px; }
+}
