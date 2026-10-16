@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const form = document.getElementById('leadForm');
   if (!form) return;
   const field = name => form.elements.namedItem(name);
@@ -31,6 +31,29 @@
     field('qualificacao').value = unqualified ? 'Nao qualificada' : 'Qualificada';
     return !unqualified;
   }
+
+  function updatePlaceholders() {
+    const mobile = window.innerWidth <= 720;
+    const examples = {
+      valor_financiar: 'Ex: 250000', prazo: 'Ex: 35',
+      nome: 'O seu nome', telefone: 'Ex: 919 750 548', email: 'oseuemail@email.pt',
+      situacao_outra: 'Descreva a situa\u00e7\u00e3o profissional',
+      situacao_outra2: 'Descreva a situa\u00e7\u00e3o profissional'
+    };
+    form.querySelectorAll('.form-group label[for]').forEach(label => {
+      const input = document.getElementById(label.htmlFor);
+      if (!input) return;
+      const question = label.textContent.trim();
+      input.setAttribute('aria-label', question);
+      if (input.tagName === 'SELECT') {
+        input.options[0].textContent = mobile ? question : 'Selecionar';
+      } else {
+        input.placeholder = mobile ? (input.name === 'nome' ? 'Nome' : question) : (examples[input.name] || question);
+      }
+    });
+  }
+  updatePlaceholders();
+  window.addEventListener('resize', updatePlaceholders);
   form.addEventListener('change', updateFields);
   form.addEventListener('input', event => {
     const group = event.target.closest('.form-group');
@@ -68,5 +91,29 @@
     button.disabled = true;
     button.textContent = 'A enviar...';
   });
+
+  // Fit the two title lines to each phone's actual card width.
+  const formTitle = document.querySelector('.form-card h2');
+  function fitFormTitle() {
+    if (!formTitle) return;
+    formTitle.style.removeProperty('font-size');
+    if (window.innerWidth > 720) return;
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    if (!context) return;
+    const style = window.getComputedStyle(formTitle);
+    const baseSize = 21;
+    context.font = style.fontWeight + ' ' + baseSize + 'px ' + style.fontFamily;
+    const lines = Array.from(formTitle.querySelectorAll('.form-title-line'));
+    const widest = Math.max(...lines.map(line => context.measureText(line.textContent.trim()).width));
+    const available = formTitle.clientWidth - 4;
+    if (available > 0 && widest > 0) {
+      formTitle.style.fontSize = Math.min(baseSize, baseSize * available / widest) * 0.95 + 'px';
+    }
+  }
+  fitFormTitle();
+  window.addEventListener('resize', fitFormTitle);
+  if (document.fonts) document.fonts.ready.then(fitFormTitle);
+  if (window.ResizeObserver && formTitle) new ResizeObserver(fitFormTitle).observe(formTitle.parentElement);
   updateFields();
 })();
