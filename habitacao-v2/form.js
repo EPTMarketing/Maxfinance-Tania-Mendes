@@ -12,20 +12,12 @@
     });
   }
   function updateFields() {
-    const transfer = field('objetivo').value === 'Transfer\u00eancia';
-    toggle('faseWrap', !transfer);
-    toggle('motivoWrap', transfer);
     toggle('outraWrap', field('situacao_profissional').value === 'Outra situa\u00e7\u00e3o');
     const second = field('titulares').value === '2';
     toggle('titular2Wrap', second);
     toggle('outra2Wrap', second && field('situacao_profissional2').value === 'Outra situa\u00e7\u00e3o');
-    const amountLabel = transfer ? 'Capital em d\u00edvida atual (\u20ac)' : 'Valor de financiamento (\u20ac)';
-    const termLabel = transfer ? 'Prazo restante (anos)' : 'Prazo (anos)';
-    [['valor_financiar', amountLabel], ['prazo', termLabel]].forEach(([name, label]) => {
-      form.querySelector('label[for="' + name + '"]').textContent = label;
-      field(name).placeholder = label;
-    });
   }
+
   function updateLeadDestination() {
     const phase = field('fase_imovel');
     const timing = field('timing');
