@@ -43,7 +43,12 @@
     form.querySelectorAll('.form-group label[for]').forEach(label => {
       const input = document.getElementById(label.htmlFor);
       if (!input) return;
-      const question = label.textContent.trim();
+      if (input.name === 'valor_financiar') {
+        label.textContent = 'Valor de financiamento (em \u20ac)';
+      }
+      const question = input.name === 'valor_financiar'
+        ? 'Valor de financiamento pretendido (\u20ac)'
+        : label.textContent.trim();
       input.setAttribute('aria-label', question);
       if (input.tagName === 'SELECT') {
         input.options[0].textContent = mobile ? question : 'Selecionar';
