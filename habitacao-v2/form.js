@@ -35,7 +35,7 @@
   function updatePlaceholders() {
     const mobile = window.innerWidth <= 720;
     const examples = {
-      valor_financiar: 'Ex: 250000', prazo: 'Ex: 35',
+      valor_financiar: 'Ex: 250000',
       nome: 'O seu nome', telefone: 'Ex: 919 750 548', email: 'oseuemail@email.pt',
       situacao_outra: 'Descreva a situa\u00e7\u00e3o profissional',
       situacao_outra2: 'Descreva a situa\u00e7\u00e3o profissional'
@@ -89,7 +89,8 @@
     if (firstInvalid) { event.preventDefault(); firstInvalid.focus(); return; }
     const qualified = updateLeadDestination();
     try {
-      ['valor_financiar', 'prazo', 'nome', 'telefone', 'email'].forEach(name => sessionStorage.setItem('sim_' + name, field(name).value));
+      sessionStorage.setItem('sim_prazo', '35');
+      ['valor_financiar', 'nome', 'telefone', 'email'].forEach(name => sessionStorage.setItem('sim_' + name, field(name).value));
     } catch (_) {}
     if (qualified && window.sendLeadToBrevo) window.sendLeadToBrevo(form);
     const button = form.querySelector('.submit-btn');
